@@ -1,0 +1,30 @@
+.group {
+  display: inline-flex;
+  border: 1px solid var(--hairline);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.option {
+  padding: 6px 12px;
+  background: transparent;
+  border: 0;
+  border-right: 1px solid var(--hairline);
+  color: var(--body);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.option:last-child {
+  border-right: 0;
+}
+
+.option:hover {
+  background: var(--raised);
+}
+
+.selected,
+.selected:hover {
+  background: var(--primary);
+  color: var(--on-primary);
+}

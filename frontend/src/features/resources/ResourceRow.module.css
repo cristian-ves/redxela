@@ -1,0 +1,27 @@
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.row:first-child {
+  padding-top: 0;
+}
+
+.row:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.line {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.name {
+  font-weight: 500;
+  color: var(--body-strong);
+}
