@@ -1,4 +1,4 @@
-package com.redxela.api.view;
+package com.redxela.api.simulation;
 
 import com.redxela.generator.OrderGenerator;
 import com.redxela.inventory.AutoReplenisher;

@@ -1,4 +1,4 @@
-package com.redxela.api.view;
+package com.redxela.api.reception;
 
 import com.redxela.inventory.ProcessedArrival;
 import com.redxela.messaging.ArrivalMessage;

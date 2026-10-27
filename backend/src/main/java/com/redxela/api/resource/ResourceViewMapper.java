@@ -1,6 +1,6 @@
-package com.redxela.api.view;
+package com.redxela.api.resource;
 
-import com.redxela.api.view.ResourceView.Holding;
+import com.redxela.api.resource.ResourceView.Holding;
 import com.redxela.resources.ResourceManager;
 import com.redxela.resources.ResourcePool;
 import java.util.List;

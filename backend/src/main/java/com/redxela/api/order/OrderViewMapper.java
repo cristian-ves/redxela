@@ -1,6 +1,6 @@
-package com.redxela.api.view;
+package com.redxela.api.order;
 
-import com.redxela.api.view.OrderView.LineView;
+import com.redxela.api.order.OrderView.LineView;
 import com.redxela.clock.SimulationClock;
 import com.redxela.domain.order.Order;
 import com.redxela.domain.order.OrderStatus;
