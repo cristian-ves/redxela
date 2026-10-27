@@ -12,7 +12,7 @@ const CONNECTION_TEXT: Record<string, string> = { open: 'Live', connecting: 'Con
 /* Application bar: name, simulated clock, connection state and theme switch. */
 export function AppHeader() {
   const dispatch = useAppDispatch()
-  const { clockMinutes, speed, counters } = useAppSelector(selectSnapshot)
+  const { clockMinutes, speed, counters, deadlock } = useAppSelector(selectSnapshot)
   const connection = useAppSelector(selectConnection)
   const theme = useAppSelector(selectTheme)
 
@@ -30,6 +30,7 @@ export function AppHeader() {
           </span>
           <span className={`mono ${styles.clock}`}>{formatClock(clockMinutes)}</span>
           <span className="mono muted">×{speed}</span>
+          {deadlock && <Badge tone="bad">Deadlock</Badge>}
           <Badge tone={CONNECTION_TONE[connection]}>{CONNECTION_TEXT[connection]}</Badge>
           <Button small onClick={() => dispatch(themeToggled())}>
             {theme === 'dark' ? 'Cream theme' : 'Dark theme'}
