@@ -11,6 +11,8 @@ export const selectWaiting = (state: RootState) => state.snapshot.current.waitin
 export const selectCompleted = (state: RootState) => state.snapshot.current.completed
 export const selectStats = (state: RootState) => state.snapshot.current.stats
 export const selectWarehouse = (state: RootState) => state.snapshot.current.warehouse
+export const selectStock = (state: RootState) => state.snapshot.current.stock
+export const selectReception = (state: RootState) => state.snapshot.current.reception
 export const selectConnection = (state: RootState) => state.connection.status
 export const selectMeta = (state: RootState) => state.catalog.meta
 export const selectClients = (state: RootState) => state.catalog.clients

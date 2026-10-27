@@ -1,0 +1,7 @@
+.low {
+  color: var(--wait);
+}
+
+.out {
+  color: var(--danger);
+}
