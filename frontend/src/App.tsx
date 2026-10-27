@@ -1,5 +1,6 @@
 import { Notice } from './components/Notice'
 import { AppHeader } from './features/header/AppHeader'
+import { ConflictPanel } from './features/conflict/ConflictPanel'
 import { ControlsPanel } from './features/controls/ControlsPanel'
 import { EntryPanel } from './features/entry/EntryPanel'
 import { CompletedPanel } from './features/orders/CompletedPanel'
@@ -23,6 +24,7 @@ export default function App() {
       <AppHeader />
       <main className={styles.page}>
         <div className={styles.span12}><ControlsPanel /></div>
+        <div className={styles.span12}><ConflictPanel /></div>
         <div className={styles.span5}><ResourcesPanel /></div>
         <div className={styles.span7}><InProcessPanel /></div>
         <div className={styles.span7}><WaitingPanel /></div>

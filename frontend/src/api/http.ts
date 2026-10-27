@@ -1,4 +1,4 @@
-import type { ClientView, Meta, OrderView, PolicyId, TruckView } from './types'
+import type { ClientView, Meta, OrderView, PolicyId, Snapshot, TruckView } from './types'
 
 export const API_URL: string = import.meta.env.VITE_API_URL ?? 'http://localhost:8080'
 
@@ -47,6 +47,7 @@ export interface NewOrderBody {
 /* Every command and query the interface can send, one function per endpoint. */
 export const api = {
   meta: () => request<Meta>('GET', '/meta'),
+  snapshot: () => request<Snapshot>('GET', '/snapshot'),
   clients: () => request<ClientView[]>('GET', '/clients'),
   createClient: (name: string, level: number) => request<ClientView>('POST', '/clients', { name, level }),
   createOrder: (body: NewOrderBody) => request<OrderView>('POST', '/orders', body),
