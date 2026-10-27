@@ -377,7 +377,7 @@ sequenceDiagram
 - El muelle es **un solo hilo**: descarga un camión a la vez, y cada descarga es una operación como las órdenes (pide montacargas y luego escáner), por lo que **compite con el despacho por el escáner compartido**.
 - Cuando el buffer está lleno, el hilo del muelle espera en `put`; el camión queda en estado *Waiting for Inventory*. Es la **contrapresión**: los camiones se acumulan en la cola en vez de perderse datos.
 - Lo único que comparten Recepción e Inventario es el `ArrivalMessage` (id de recepción, producto y unidades). Ninguno toca las estructuras del otro.
-- Inventario procesa cada aviso en **3 minutos simulados** (actualizar el stock y asignar las posiciones). Con muchos camiones seguidos es el consumidor el más lento, y el buffer se llena: es el comportamiento que permite observar la contrapresión.
+- Inventario procesa cada aviso en **3 minutos simulados** (actualizar el stock y asignar las posiciones). Descargar un camión toma 1 minuto de caminata más `max(0.5, 0.05 × unidades)` minutos, así que con camiones pequeños (menos de unas 40 unidades) el productor es más rápido que el consumidor: el buffer se llena, y es el comportamiento que permite observar la contrapresión. Con camiones grandes (el valor por defecto de la interfaz es 50 unidades) el más lento es el muelle y el buffer apenas se ocupa.
 - Al terminar de guardar un lote, Inventario avisa al `Dispatcher` (`DispatchSignal`, sección 6) para que reevalúe las órdenes que esperaban ese producto.
 - Si la bodega no tiene espacio, Inventario registra el aviso como *Rejected* con el motivo y sigue; no se detiene.
 
@@ -571,6 +571,7 @@ No hay base de datos: todo está en memoria, y es el diseño buscado (el objeto 
 - **Persistencia:** nada sobrevive a un reinicio. Es deliberado, pero un historial de ejecuciones permitiría comparar políticas entre corridas.
 - **Un solo muelle de recepción:** modelar varios muelles aumentaría la contención por el escáner y por los montacargas.
 - **Comparación de políticas:** como las mediciones de cada política solo se acumulan mientras está activa, una comparación rigurosa requiere reiniciar entre políticas con la misma semilla (ver el manual de usuario, sección 5.6). Un modo que ejecute las tres en paralelo sobre el mismo flujo la haría exacta.
+- **Resolución del tiempo a alta velocidad:** las esperas se hacen en intervalos reales fijos (50 ms en las esperas por tiempo simulado, como las caminatas y el procesamiento de Inventario, y 100 ms para el avance del trabajo), que a ×20 equivalen a 1 y 2 minutos simulados. A velocidades altas los tiempos cortos se redondean hacia arriba y los valores absolutos de las estadísticas salen algo inflados; comparar políticas a la misma velocidad sigue siendo válido, y por debajo de ×10 el efecto es pequeño. Dormir solo el tiempo restante hasta el instante objetivo lo eliminaría.
 - **Muestreo de utilización:** es una aproximación a intervalos fijos. Registrar el tiempo exacto en cada `acquire` y `release` daría el uso ponderado por tiempo.
 - **Evitación de interbloqueos:** el algoritmo del banquero no está implementado (sección 7.7).
 - **Seguridad:** no hay autenticación; la API está pensada para un entorno de laboratorio.

@@ -210,7 +210,7 @@ Hasta que se completa la primera orden, los promedios aparecen como "—".
 
 1. Ve a **Manual entry → Truck arrival**, elige producto y unidades (por ejemplo 50) y pulsa **Register truck**.
 2. Sigue el recorrido en *Reception and Inventory*: cola, muelle, casilla del buffer, fila en *Stored by Inventory*.
-3. El stock sube y la bodega muestra el lote nuevo. Para llenar el buffer, sube la velocidad a ×20 y registra varios camiones seguidos.
+3. El stock sube y la bodega muestra el lote nuevo. Para llenar el buffer usa velocidad ×5 o ×10 y registra unos 15 a 20 camiones seguidos de pocas unidades (por ejemplo, 5): un camión pequeño se descarga más rápido de lo que Inventario lo procesa. Con el valor por defecto de 50 unidades el buffer casi no se ocupa, y a ×20 tampoco se llena porque el reloj avanza en saltos de 1 a 2 minutos simulados y cada descarga tarda al menos unos 3.
 
 ### 5.4 Provocar y resolver un deadlock
 
@@ -229,8 +229,8 @@ Hasta que se completa la primera orden, los promedios aparecen como "—".
 ### 5.6 Comparar las tres políticas
 
 **Rápida, en una sola ejecución:**
-1. Fija una semilla (por ejemplo 42), velocidad ×20 y un ritmo (por ejemplo 0.8).
-2. Elige *Strict priority*, pulsa **Start generator** y deja correr unas 8 horas simuladas (24 segundos reales a ×20).
+1. Fija una semilla (por ejemplo 42), velocidad ×10 y un ritmo (por ejemplo 0.8).
+2. Elige *Strict priority*, pulsa **Start generator** y deja correr unas 8 horas simuladas (48 segundos reales a ×10).
 3. Cambia a *Priority with aging* y deja pasar el mismo tiempo; repite con *Fewest items first*.
 4. Compara las tres filas de *Policy comparison*.
 
