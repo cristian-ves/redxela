@@ -1,0 +1,78 @@
+.sections {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.truck {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.truckTop {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.meter {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.meter > :first-child {
+  flex: 1;
+}
+
+.waits {
+  font-size: 12px;
+  color: var(--danger);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.chip {
+  padding: 1px 6px;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-sm);
+  background: var(--raised);
+  font: 400 12px/16px var(--font-mono);
+  color: var(--body-strong);
+}
+
+.slots {
+  display: grid;
+  grid-template-columns: repeat(var(--slots), minmax(0, 1fr));
+  gap: var(--space-2);
+}
+
+.slot {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 44px;
+  padding: 4px 8px;
+  border: 1px dashed var(--hairline);
+  border-radius: var(--radius-sm);
+  font: 400 12px/16px var(--font-mono);
+  color: var(--mute);
+  overflow: hidden;
+}
+
+.full {
+  border: 1px solid var(--busy);
+  background: var(--raised);
+  color: var(--body-strong);
+}
+
+.where {
+  font-size: 12px;
+  color: var(--mute);
+}

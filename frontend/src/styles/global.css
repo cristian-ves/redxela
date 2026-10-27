@@ -26,6 +26,22 @@ select {
   color: inherit;
 }
 
+input:not([type='checkbox']),
+select {
+  padding: 6px 8px;
+  background: var(--canvas);
+  border: 1px solid var(--hairline);
+  border-radius: 3px;
+}
+
+input::placeholder {
+  color: var(--mute);
+}
+
+input:disabled {
+  opacity: 0.5;
+}
+
 button {
   cursor: pointer;
 }
