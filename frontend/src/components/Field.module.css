@@ -1,0 +1,22 @@
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.field select,
+.field input[type='text'],
+.field input[type='number'] {
+  width: 100%;
+}
+
+.label {
+  font-size: var(--text-sm);
+  color: var(--mute);
+}
+
+.hint {
+  font-size: var(--text-sm);
+  color: var(--body);
+}
