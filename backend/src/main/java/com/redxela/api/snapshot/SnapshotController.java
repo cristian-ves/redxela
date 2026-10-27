@@ -1,7 +1,5 @@
-package com.redxela.api;
+package com.redxela.api.snapshot;
 
-import com.redxela.api.view.Snapshot;
-import com.redxela.api.view.SnapshotAssembler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

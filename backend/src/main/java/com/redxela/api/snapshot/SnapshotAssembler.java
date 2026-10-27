@@ -1,5 +1,10 @@
-package com.redxela.api.view;
+package com.redxela.api.snapshot;
 
+import com.redxela.api.order.OrderView;
+import com.redxela.api.order.OrderViewMapper;
+import com.redxela.api.reception.ReceptionViewMapper;
+import com.redxela.api.resource.ResourceViewMapper;
+import com.redxela.api.simulation.ControlsViewMapper;
 import com.redxela.clock.SimulationClock;
 import com.redxela.deadlock.DeadlockMonitor;
 import com.redxela.inventory.Inventory;

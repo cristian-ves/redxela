@@ -1,5 +1,6 @@
-package com.redxela.api.view;
+package com.redxela.api.snapshot;
 
+import com.redxela.api.order.OrderView;
 import java.util.List;
 
 /*

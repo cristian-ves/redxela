@@ -1,6 +1,6 @@
 package com.redxela.api.ws;
 
-import com.redxela.api.view.SnapshotAssembler;
+import com.redxela.api.snapshot.SnapshotAssembler;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 import lombok.RequiredArgsConstructor;

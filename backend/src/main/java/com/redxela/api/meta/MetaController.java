@@ -1,12 +1,11 @@
-package com.redxela.api;
+package com.redxela.api.meta;
 
-import com.redxela.api.view.MetaView;
-import com.redxela.api.view.MetaView.LevelMeta;
-import com.redxela.api.view.MetaView.PolicyMeta;
-import com.redxela.api.view.MetaView.ProductMeta;
-import com.redxela.api.view.MetaView.Requirement;
-import com.redxela.api.view.MetaView.ResourceMeta;
-import com.redxela.api.view.MetaView.TypeMeta;
+import com.redxela.api.meta.MetaView.LevelMeta;
+import com.redxela.api.meta.MetaView.PolicyMeta;
+import com.redxela.api.meta.MetaView.ProductMeta;
+import com.redxela.api.meta.MetaView.Requirement;
+import com.redxela.api.meta.MetaView.ResourceMeta;
+import com.redxela.api.meta.MetaView.TypeMeta;
 import com.redxela.domain.catalog.MerchandiseType;
 import com.redxela.domain.catalog.ProductCatalog;
 import com.redxela.domain.client.ServiceLevel;

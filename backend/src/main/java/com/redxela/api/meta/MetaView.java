@@ -1,4 +1,4 @@
-package com.redxela.api.view;
+package com.redxela.api.meta;
 
 import java.util.List;
 

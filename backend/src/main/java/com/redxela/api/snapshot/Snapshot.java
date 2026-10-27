@@ -1,5 +1,9 @@
-package com.redxela.api.view;
+package com.redxela.api.snapshot;
 
+import com.redxela.api.order.OrderView;
+import com.redxela.api.reception.ReceptionView;
+import com.redxela.api.resource.ResourceView;
+import com.redxela.api.simulation.ControlsView;
 import com.redxela.deadlock.DeadlockReport;
 import com.redxela.stats.PolicyStats;
 import com.redxela.warehouse.SlotState;

@@ -1,6 +1,6 @@
-package com.redxela.api.view;
+package com.redxela.api.reception;
 
-import com.redxela.api.view.ReceptionView.TruckView;
+import com.redxela.api.reception.ReceptionView.TruckView;
 import com.redxela.inventory.InventoryWorker;
 import com.redxela.messaging.ArrivalMessage;
 import com.redxela.messaging.BoundedBuffer;
