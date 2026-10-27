@@ -11,6 +11,11 @@ import java.util.Map;
 /*
  * Running totals for one scheduling policy. It is not thread-safe on its own:
  * StatsCollector is its only user and serializes every call.
+ *
+ * Throughput and utilization are measured over busy time only: the simulated
+ * minutes during which at least one order was open. Otherwise a policy that
+ * stays selected after the work has run out would keep losing both figures
+ * just for the clock going on.
  */
 class PolicyAccumulator {
 
@@ -20,23 +25,17 @@ class PolicyAccumulator {
     private final int[] completedByLevel = new int[LEVELS.length];
     private final double[] waitByLevel = new double[LEVELS.length];
     private final int[] withinTargetByLevel = new int[LEVELS.length];
-    private final double[] utilizationSum = new double[RESOURCES.length];
+    private final double[] usedMinutes = new double[RESOURCES.length];
     private double totalProcessing;
-    private long utilizationSamples;
-    private double activeMinutes;
-    private double activeSince = Double.NaN;
+    private double busyMinutes;
+    private boolean active;
 
-    void activate(double now) {
-        if (Double.isNaN(activeSince)) {
-            activeSince = now;
-        }
+    void activate() {
+        active = true;
     }
 
-    void deactivate(double now) {
-        if (!Double.isNaN(activeSince)) {
-            activeMinutes += now - activeSince;
-            activeSince = Double.NaN;
-        }
+    void deactivate() {
+        active = false;
     }
 
     void record(Order order) {
@@ -49,21 +48,24 @@ class PolicyAccumulator {
         }
     }
 
-    void sampleUtilization(Map<ResourceType, Double> usedFractions) {
-        for (ResourceType type : RESOURCES) {
-            utilizationSum[type.ordinal()] += usedFractions.getOrDefault(type, 0.0);
+    /* Adds a sample that stands for the given simulated minutes; samples taken while idle are ignored. */
+    void sample(Map<ResourceType, Double> usedFractions, double minutes, boolean busy) {
+        if (!busy) {
+            return;
         }
-        utilizationSamples++;
+        for (ResourceType type : RESOURCES) {
+            usedMinutes[type.ordinal()] += usedFractions.getOrDefault(type, 0.0) * minutes;
+        }
+        busyMinutes += minutes;
     }
 
-    PolicyStats snapshot(String policy, double now) {
+    PolicyStats snapshot(String policy) {
         int completed = sum(completedByLevel);
-        double elapsed = activeMinutes + (Double.isNaN(activeSince) ? 0 : now - activeSince);
         Map<ResourceType, Double> utilization = utilizationPercent();
-        return new PolicyStats(policy, !Double.isNaN(activeSince), completed,
+        return new PolicyStats(policy, active, completed,
                 average(sum(waitByLevel), completed), average(totalProcessing, completed),
                 percent(sum(withinTargetByLevel), completed),
-                elapsed > 0 ? completed / elapsed * 60 : 0,
+                busyMinutes > 0 ? completed / busyMinutes * 60 : 0,
                 utilization.values().stream().mapToDouble(Double::doubleValue).average().orElse(0),
                 utilization, levelStats());
     }
@@ -71,7 +73,7 @@ class PolicyAccumulator {
     private Map<ResourceType, Double> utilizationPercent() {
         Map<ResourceType, Double> percent = new EnumMap<>(ResourceType.class);
         for (ResourceType type : RESOURCES) {
-            percent.put(type, utilizationSamples == 0 ? 0 : utilizationSum[type.ordinal()] / utilizationSamples * 100);
+            percent.put(type, busyMinutes == 0 ? 0 : usedMinutes[type.ordinal()] / busyMinutes * 100);
         }
         return percent;
     }

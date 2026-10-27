@@ -1,3 +1,4 @@
+import { ChartColumnIcon } from 'lucide-react'
 import { Empty } from '../../components/Empty'
 import { Panel } from '../../components/Panel'
 import { Scroll } from '../../components/Scroll'
@@ -14,7 +15,7 @@ export function StatsPanel() {
   const active = stats.find((row) => row.active)
 
   return (
-    <Panel title="Statistics" subtitle="Measured per policy since the last reset; times are simulated minutes">
+    <Panel icon={ChartColumnIcon} title="Statistics" subtitle="Measured per policy since the last reset; times are simulated minutes, rates count only the time with open orders">
       {stats.length === 0 || !active ? (
         <Empty>No measurements yet.</Empty>
       ) : (

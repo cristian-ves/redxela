@@ -1,3 +1,4 @@
+import { GaugeIcon } from 'lucide-react'
 import { Panel } from '../../components/Panel'
 import { useAppSelector } from '../../store/hooks'
 import { selectResources } from '../../store/selectors'
@@ -8,7 +9,7 @@ import styles from './ResourcesPanel.module.css'
 export function ResourcesPanel() {
   const resources = useAppSelector(selectResources)
   return (
-    <Panel title="Resources" subtitle="Units in use, who holds them and who is blocked waiting">
+    <Panel icon={GaugeIcon} title="Resources" subtitle="Units in use, who holds them and who is blocked waiting">
       <ul className={styles.list}>
         {resources.map((resource) => (
           <ResourceRow key={resource.type} resource={resource} />

@@ -11,6 +11,6 @@
 
 .waits {
   margin-top: 4px;
-  font-size: 12px;
+  font-size: var(--text-sm);
   color: var(--danger);
 }

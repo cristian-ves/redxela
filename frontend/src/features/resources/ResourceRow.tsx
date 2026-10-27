@@ -12,7 +12,7 @@ export function ResourceRow({ resource }: { resource: ResourceView }) {
     <li className={styles.row}>
       <div className={styles.line}>
         <span className={styles.name}>{resource.label}</span>
-        <span className="mono muted">
+        <span className="num muted">
           {used} / {resource.capacity} in use
         </span>
       </div>

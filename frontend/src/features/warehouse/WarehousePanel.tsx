@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { WarehouseIcon } from 'lucide-react'
 import { Panel } from '../../components/Panel'
 import { useAppSelector } from '../../store/hooks'
 import { selectWarehouse } from '../../store/selectors'
@@ -14,6 +15,7 @@ export function WarehousePanel() {
 
   return (
     <Panel
+      icon={WarehouseIcon}
       title="Warehouse"
       subtitle={`${used} of ${slots.length} slots in use · a slot holds up to ${SLOT_CAPACITY_UNITS} units`}
     >

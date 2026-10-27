@@ -1,3 +1,4 @@
+import { PackageCheckIcon } from 'lucide-react'
 import { Empty } from '../../components/Empty'
 import { Panel } from '../../components/Panel'
 import { Scroll } from '../../components/Scroll'
@@ -10,7 +11,7 @@ import { OrderCell } from './OrderCell'
 export function CompletedPanel() {
   const orders = useAppSelector(selectCompleted)
   return (
-    <Panel title="Completed orders" subtitle="Latest first">
+    <Panel icon={PackageCheckIcon} title="Completed orders" subtitle="Latest first">
       {orders.length === 0 ? (
         <Empty>Nothing has been completed yet.</Empty>
       ) : (
@@ -27,8 +28,8 @@ export function CompletedPanel() {
               {orders.map((order) => (
                 <tr key={order.id}>
                   <td><OrderCell order={order} /></td>
-                  <td className="mono">{formatDuration(order.waitedMinutes)}</td>
-                  <td className="mono">{formatDuration(order.processingMinutes)}</td>
+                  <td className="num">{formatDuration(order.waitedMinutes)}</td>
+                  <td className="num">{formatDuration(order.processingMinutes)}</td>
                 </tr>
               ))}
             </tbody>

@@ -9,7 +9,7 @@
   border: 1px solid var(--hairline);
   border-radius: var(--radius-sm);
   background: var(--raised);
-  font-size: 12px;
+  font-size: var(--text-sm);
   color: var(--body-strong);
   white-space: nowrap;
 }

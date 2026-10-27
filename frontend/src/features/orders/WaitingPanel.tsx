@@ -1,3 +1,4 @@
+import { ListOrderedIcon } from 'lucide-react'
 import { Empty } from '../../components/Empty'
 import { Panel } from '../../components/Panel'
 import { Scroll } from '../../components/Scroll'
@@ -13,6 +14,7 @@ export function WaitingPanel() {
 
   return (
     <Panel
+      icon={ListOrderedIcon}
       title="Waiting list"
       subtitle={policyLabel ? `${policyLabel}: ${criterion}` : undefined}
       actions={hidden > 0 ? <span className="muted">Showing {orders.length} of {total}</span> : undefined}
@@ -33,9 +35,9 @@ export function WaitingPanel() {
             <tbody>
               {orders.map((order, index) => (
                 <tr key={order.id}>
-                  <td className="mono muted">{index + 1}</td>
+                  <td className="num muted">{index + 1}</td>
                   <td><OrderCell order={order} /></td>
-                  <td className="mono">{formatDuration(order.waitedMinutes)}</td>
+                  <td className="num">{formatDuration(order.waitedMinutes)}</td>
                   <td>
                     {order.waitReasonLabel ?? '—'}
                     {order.deferredUntil && <div className="muted">until {order.deferredUntil} finishes</div>}

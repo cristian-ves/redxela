@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { SquarePenIcon } from 'lucide-react'
 import { Panel } from '../../components/Panel'
 import { Segmented } from '../../components/Segmented'
 import { ClientForm } from './ClientForm'
@@ -24,7 +25,7 @@ const SUBTITLES: Record<Tab, string> = {
 export function EntryPanel() {
   const [tab, setTab] = useState<Tab>('order')
   return (
-    <Panel title="Manual entry" subtitle={SUBTITLES[tab]}>
+    <Panel icon={SquarePenIcon} title="Manual entry" subtitle={SUBTITLES[tab]}>
       <div className={styles.tabs}>
         <Segmented label="Kind of entry" options={TABS} value={tab} onChange={setTab} />
       </div>

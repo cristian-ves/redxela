@@ -23,7 +23,7 @@ export function ProcessedList({ processed }: { processed: ProcessedArrival[] }) 
               const stored = arrival.outcome === 'STORED'
               return (
                 <tr key={arrival.receptionId}>
-                  <td className="mono">{arrival.receptionId}</td>
+                  <td className="num">{arrival.receptionId}</td>
                   <td>{arrival.sku} × {arrival.units}</td>
                   <td><Badge tone={stored ? 'ok' : 'bad'}>{stored ? 'Stored' : 'Rejected'}</Badge></td>
                   <td className={styles.where}>{outcomeText(arrival)}</td>

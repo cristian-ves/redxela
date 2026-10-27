@@ -22,13 +22,13 @@ export function Dock({ truck }: { truck: TruckView | null }) {
     <Section title="Dock">
       <div className={styles.truck}>
         <div className={styles.truckTop}>
-          <span className="mono">{truck.id}</span>
+          <span className="num">{truck.id}</span>
           <span>{truck.product} × {truck.units}</span>
           <TruckStatus status={truck.status} />
         </div>
         <div className={styles.meter}>
           <ProgressBar value={truck.progress} label={`${truck.id} unloading`} />
-          <span className="mono muted">{Math.round(truck.progress * 100)} % · {formatDuration(truck.remainingMinutes)} left</span>
+          <span className="num muted">{Math.round(truck.progress * 100)} % · {formatDuration(truck.remainingMinutes)} left</span>
         </div>
         <ResourceChips types={truck.held} />
         {truck.waitingFor && <span className={styles.waits}>Waits for {labels[truck.waitingFor] ?? truck.waitingFor}</span>}

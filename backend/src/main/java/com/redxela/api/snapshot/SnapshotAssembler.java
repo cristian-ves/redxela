@@ -53,7 +53,7 @@ public class SnapshotAssembler {
                         waitingList.size(), inProcess.size()),
                 resources.toViews(), inProcess, waiting(now),
                 orders.toViews(orderBook.recentlyCompleted(COMPLETED_LIMIT), now),
-                deadlockMonitor.current(), stats.snapshot(now), stock(), warehouse.snapshot(), reception.toView());
+                deadlockMonitor.current(), stats.snapshot(), stock(), warehouse.snapshot(), reception.toView());
     }
 
     private WaitingView waiting(double now) {

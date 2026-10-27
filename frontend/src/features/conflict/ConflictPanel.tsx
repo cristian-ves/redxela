@@ -1,3 +1,4 @@
+import { LockIcon, ShieldAlertIcon } from 'lucide-react'
 import { Panel } from '../../components/Panel'
 import { formatClock } from '../../lib/format'
 import { useAppSelector } from '../../store/hooks'
@@ -20,6 +21,7 @@ export function ConflictPanel() {
 
   return (
     <Panel
+      icon={deadlock ? ShieldAlertIcon : LockIcon}
       title={deadlock ? 'Deadlock detected' : 'Deadlock monitor'}
       subtitle={deadlock ? `Found at ${formatClock(deadlock.detectedAtMinutes)}` : undefined}
       alert={deadlock !== null}

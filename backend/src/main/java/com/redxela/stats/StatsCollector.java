@@ -22,32 +22,33 @@ public class StatsCollector {
         accumulators.computeIfAbsent(policy, key -> new PolicyAccumulator());
     }
 
-    public synchronized void switchPolicy(String policy, double now) {
+    public synchronized void switchPolicy(String policy) {
         if (activePolicy != null) {
-            accumulators.get(activePolicy).deactivate(now);
+            accumulators.get(activePolicy).deactivate();
         }
         register(policy);
         activePolicy = policy;
-        accumulators.get(policy).activate(now);
+        accumulators.get(policy).activate();
     }
 
     public synchronized void recordCompletion(Order order) {
         accumulators.get(activePolicy).record(order);
     }
 
-    public synchronized void sampleUtilization(Map<ResourceType, Double> usedFractions) {
-        accumulators.get(activePolicy).sampleUtilization(usedFractions);
+    /* One utilization sample standing for the given simulated minutes; it only counts when the system had open orders. */
+    public synchronized void sampleUtilization(Map<ResourceType, Double> usedFractions, double minutes, boolean busy) {
+        accumulators.get(activePolicy).sample(usedFractions, minutes, busy);
     }
 
-    /* Discards every measurement and starts counting again from now under the same policy. */
-    public synchronized void reset(double now) {
+    /* Discards every measurement and starts counting again under the same policy. */
+    public synchronized void reset() {
         accumulators.replaceAll((policy, old) -> new PolicyAccumulator());
-        accumulators.get(activePolicy).activate(now);
+        accumulators.get(activePolicy).activate();
     }
 
-    public synchronized List<PolicyStats> snapshot(double now) {
+    public synchronized List<PolicyStats> snapshot() {
         return accumulators.entrySet().stream()
-                .map(entry -> entry.getValue().snapshot(entry.getKey(), now))
+                .map(entry -> entry.getValue().snapshot(entry.getKey()))
                 .toList();
     }
 }

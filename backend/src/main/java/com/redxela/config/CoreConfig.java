@@ -69,15 +69,15 @@ public class CoreConfig {
      * policy the selector uses by default.
      */
     @Bean
-    public StatsCollector statsCollector(SimulationClock clock) {
+    public StatsCollector statsCollector() {
         StatsCollector stats = new StatsCollector();
-        stats.switchPolicy(PolicyType.STRICT_PRIORITY.name(), clock.nowMinutes());
+        stats.switchPolicy(PolicyType.STRICT_PRIORITY.name());
         return stats;
     }
 
     @Bean
-    public PolicySelector policySelector(StatsCollector stats, SimulationClock clock) {
-        return new PolicySelector(stats, clock);
+    public PolicySelector policySelector(StatsCollector stats) {
+        return new PolicySelector(stats);
     }
 
     @Bean
@@ -101,7 +101,8 @@ public class CoreConfig {
     }
 
     @Bean(initMethod = "start", destroyMethod = "stop")
-    public UtilizationSampler utilizationSampler(ResourceManager resources, StatsCollector stats) {
-        return new UtilizationSampler(resources, stats);
+    public UtilizationSampler utilizationSampler(ResourceManager resources, SimulationClock clock, StatsCollector stats,
+                                                 OrderBook orderBook) {
+        return new UtilizationSampler(resources, clock, stats, orderBook::hasOpenOrders);
     }
 }

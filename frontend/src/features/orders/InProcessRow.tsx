@@ -21,10 +21,10 @@ export function InProcessRow({ order }: { order: OrderView }) {
       <td>
         <div className={styles.progress}>
           <ProgressBar value={order.progress} tone={blocked ? 'bad' : 'busy'} label={`${order.id} progress`} />
-          <span className="mono muted">{percent} %</span>
+          <span className="num muted">{percent} %</span>
         </div>
       </td>
-      <td className="mono">{blocked ? '—' : formatDuration(order.remainingMinutes)}</td>
+      <td className="num">{blocked ? '—' : formatDuration(order.remainingMinutes)}</td>
       <td>
         <ResourceChips types={order.held} />
         {order.waitingFor && (

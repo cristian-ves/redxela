@@ -1,3 +1,4 @@
+import { TruckIcon } from 'lucide-react'
 import { Panel } from '../../components/Panel'
 import { useAppSelector } from '../../store/hooks'
 import { selectReception } from '../../store/selectors'
@@ -11,7 +12,7 @@ import styles from './ReceptionPanel.module.css'
 export function ReceptionPanel() {
   const reception = useAppSelector(selectReception)
   return (
-    <Panel title="Reception and Inventory" subtitle="Trucks are unloaded at the dock; Inventory stores them through a bounded buffer">
+    <Panel icon={TruckIcon} title="Reception and Inventory" subtitle="Trucks are unloaded at the dock; Inventory stores them through a bounded buffer">
       <div className={styles.sections}>
         <ArrivalQueue queued={reception.queued} capacity={reception.queueCapacity} />
         <Dock truck={reception.current} />

@@ -31,12 +31,12 @@ export function PolicyComparison() {
               <td>
                 {labelOf(row.policy)} {row.active && <Badge tone="ok">Active</Badge>}
               </td>
-              <td className="mono">{row.completed}</td>
-              <td className="mono">{orDash(formatDuration(row.averageWaitMinutes), any)}</td>
-              <td className="mono">{orDash(formatDuration(row.averageProcessingMinutes), any)}</td>
-              <td className="mono">{orDash(formatPercent(row.withinTargetPercent), any)}</td>
-              <td className="mono">{row.throughputPerHour.toFixed(1)}</td>
-              <td className="mono">{formatPercent(row.averageUtilizationPercent)}</td>
+              <td className="num">{row.completed}</td>
+              <td className="num">{orDash(formatDuration(row.averageWaitMinutes), any)}</td>
+              <td className="num">{orDash(formatDuration(row.averageProcessingMinutes), any)}</td>
+              <td className="num">{orDash(formatPercent(row.withinTargetPercent), any)}</td>
+              <td className="num">{row.throughputPerHour.toFixed(1)}</td>
+              <td className="num">{formatPercent(row.averageUtilizationPercent)}</td>
             </tr>
           )
         })}

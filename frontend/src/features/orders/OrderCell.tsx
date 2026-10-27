@@ -8,7 +8,7 @@ export function OrderCell({ order }: { order: OrderView }) {
   return (
     <>
       <div className={styles.top}>
-        <span className="mono">{order.id}</span>
+        <span className="num">{order.id}</span>
         <LevelBadge level={order.level} label={order.levelLabel} />
         {order.immediate && <Badge tone="mute">Immediate</Badge>}
       </div>

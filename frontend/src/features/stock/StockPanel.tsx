@@ -1,3 +1,4 @@
+import { BoxesIcon } from 'lucide-react'
 import { Panel } from '../../components/Panel'
 import { Scroll } from '../../components/Scroll'
 import { useAppSelector } from '../../store/hooks'
@@ -18,7 +19,7 @@ export function StockPanel() {
   const reserved = stock.reduce((sum, item) => sum + item.reserved, 0)
 
   return (
-    <Panel title="Stock" subtitle={`${onHand} units in the warehouse, ${reserved} reserved by admitted orders`}>
+    <Panel icon={BoxesIcon} title="Stock" subtitle={`${onHand} units in the warehouse, ${reserved} reserved by admitted orders`}>
       <Scroll maxHeight={420}>
         <table>
           <thead>
@@ -33,11 +34,11 @@ export function StockPanel() {
           <tbody>
             {stock.map((item) => (
               <tr key={item.sku}>
-                <td>{item.name} <span className="mono muted">{item.sku}</span></td>
+                <td>{item.name} <span className="num muted">{item.sku}</span></td>
                 <td className="muted">{typeOf(item.sku)}</td>
-                <td className="mono">{item.onHand}</td>
-                <td className="mono">{item.reserved}</td>
-                <td className={`mono ${item.available === 0 ? styles.out : item.available < LOW_STOCK ? styles.low : ''}`}>
+                <td className="num">{item.onHand}</td>
+                <td className="num">{item.reserved}</td>
+                <td className={`num ${item.available === 0 ? styles.out : item.available < LOW_STOCK ? styles.low : ''}`}>
                   {item.available}
                 </td>
               </tr>

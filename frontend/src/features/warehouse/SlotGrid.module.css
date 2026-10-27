@@ -13,7 +13,8 @@
 
 .aisle,
 .levelName {
-  font: 400 12px/16px var(--font-mono);
+  font: 400 var(--text-sm)/1.4 var(--font-sans);
+  font-variant-numeric: tabular-nums;
   color: var(--mute);
 }
 
@@ -65,7 +66,7 @@
   flex-wrap: wrap;
   gap: var(--space-4);
   margin-top: var(--space-3);
-  font-size: 12px;
+  font-size: var(--text-sm);
   color: var(--mute);
 }
 

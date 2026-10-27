@@ -26,10 +26,10 @@ export function LevelTable({ stats }: { stats: PolicyStats }) {
           return (
             <tr key={row.level}>
               <td>{titleCase(row.level)}</td>
-              <td className="mono">{row.completed}</td>
-              <td className="mono">{orDash(formatDuration(row.averageWaitMinutes), any)}</td>
-              <td className="mono muted">{target === undefined ? '—' : `≤ ${formatDuration(target)}`}</td>
-              <td className="mono">{orDash(formatPercent(row.withinTargetPercent), any)}</td>
+              <td className="num">{row.completed}</td>
+              <td className="num">{orDash(formatDuration(row.averageWaitMinutes), any)}</td>
+              <td className="num muted">{target === undefined ? '—' : `≤ ${formatDuration(target)}`}</td>
+              <td className="num">{orDash(formatPercent(row.withinTargetPercent), any)}</td>
             </tr>
           )
         })}

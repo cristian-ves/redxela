@@ -18,7 +18,7 @@ export function OrderLines({ products, stock, typed, onChange }: OrderLinesProps
         return (
           <li key={product.sku} className={styles.line}>
             <span>
-              {product.name} <span className="mono muted">{product.sku}</span>
+              {product.name} <span className="num muted">{product.sku}</span>
             </span>
             <span className="muted">{available === undefined ? '' : `${available} available`}</span>
             <input

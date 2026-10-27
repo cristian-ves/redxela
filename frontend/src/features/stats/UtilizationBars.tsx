@@ -20,14 +20,14 @@ export function UtilizationBars({ stats }: { stats: PolicyStats }) {
           <li key={resource.type} className={styles.bar}>
             <span>{resource.label}</span>
             <ProgressBar value={percent / 100} label={`${resource.label} use`} />
-            <span className="mono">{formatPercent(percent)}</span>
+            <span className="num">{formatPercent(percent)}</span>
           </li>
         )
       })}
       <li className={styles.bar}>
         <span>Warehouse slots</span>
         <ProgressBar value={occupancy} tone="ok" label="Warehouse occupancy" />
-        <span className="mono">
+        <span className="num">
           {occupied} / {warehouse.length}
         </span>
       </li>

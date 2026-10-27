@@ -24,12 +24,12 @@ export function AppHeader() {
           <p className={styles.tagline}>Distribution center simulator</p>
         </div>
         <div className={styles.status}>
-          <span className="mono muted">
+          <span className="num muted">
             {counters.submitted} submitted · {counters.completed} completed · {counters.waiting} waiting ·{' '}
             {counters.inProcess} in process
           </span>
-          <span className={`mono ${styles.clock}`}>{formatClock(clockMinutes)}</span>
-          <span className="mono muted">×{speed}</span>
+          <span className={`num ${styles.clock}`}>{formatClock(clockMinutes)}</span>
+          <span className="num muted">×{speed}</span>
           {deadlock && <Badge tone="bad">Deadlock</Badge>}
           <Badge tone={CONNECTION_TONE[connection]}>{CONNECTION_TEXT[connection]}</Badge>
           <Button small onClick={() => dispatch(themeToggled())}>

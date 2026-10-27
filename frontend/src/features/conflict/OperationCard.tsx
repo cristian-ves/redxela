@@ -11,7 +11,7 @@ export function OperationCard({ operation }: { operation: InvolvedOperation }) {
   return (
     <div className={styles.card}>
       <div className={styles.cardTop}>
-        <span className="mono">{operation.id}</span>
+        <span className="num">{operation.id}</span>
         <Badge tone="mute">{operation.order ? 'Order' : 'Truck'}</Badge>
       </div>
       <span className={styles.caption}>Holds</span>

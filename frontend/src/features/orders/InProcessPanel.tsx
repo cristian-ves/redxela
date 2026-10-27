@@ -1,3 +1,4 @@
+import { PackageOpenIcon } from 'lucide-react'
 import { Empty } from '../../components/Empty'
 import { Panel } from '../../components/Panel'
 import { Scroll } from '../../components/Scroll'
@@ -9,7 +10,7 @@ import { InProcessRow } from './InProcessRow'
 export function InProcessPanel() {
   const orders = useAppSelector(selectInProcess)
   return (
-    <Panel title="Orders in process" subtitle="Progress and time remaining, in simulated time">
+    <Panel icon={PackageOpenIcon} title="Orders in process" subtitle="Progress and time remaining, in simulated time">
       {orders.length === 0 ? (
         <Empty>No order is being processed.</Empty>
       ) : (

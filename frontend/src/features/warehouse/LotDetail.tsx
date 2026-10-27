@@ -31,8 +31,8 @@ export function LotDetail({ lotId, slots }: { lotId: string | null; slots: SlotS
   return (
     <div className={styles.detail}>
       <div className={styles.top}>
-        <span className="mono">{lotId}</span>
-        <span>{name} <span className="mono muted">{sku}</span></span>
+        <span className="num">{lotId}</span>
+        <span>{name} <span className="num muted">{sku}</span></span>
         <span className="muted">{units} units in {lot.length} slot{lot.length === 1 ? '' : 's'}</span>
         <Badge tone={groups === 1 ? 'ok' : 'wait'}>{groups === 1 ? 'Contiguous' : `Split into ${groups} groups`}</Badge>
       </div>

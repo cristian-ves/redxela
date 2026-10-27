@@ -29,7 +29,7 @@ export function GeneratorControls() {
         </label>
         <label className={styles.inline}>
           <span className="muted">Seed</span>
-          <input className={styles.input} type="number" placeholder="random" value={seedText}
+          <input className={styles.input} type="number" placeholder="default" value={seedText}
             disabled={generatorRunning} onChange={(event) => setSeedText(event.target.value)} />
         </label>
       </div>

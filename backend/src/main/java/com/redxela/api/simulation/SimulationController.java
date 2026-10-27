@@ -52,7 +52,7 @@ public class SimulationController {
     @PostMapping("/stats/reset")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void resetStats() {
-        stats.reset(clock.nowMinutes());
+        stats.reset();
     }
 
     private PolicyType policyOf(String name) {

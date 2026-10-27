@@ -1,6 +1,5 @@
 package com.redxela.scheduling.policy;
 
-import com.redxela.clock.SimulationClock;
 import com.redxela.stats.StatsCollector;
 import java.util.concurrent.atomic.AtomicReference;
 import lombok.RequiredArgsConstructor;
@@ -14,7 +13,6 @@ import lombok.RequiredArgsConstructor;
 public class PolicySelector {
 
     private final StatsCollector stats;
-    private final SimulationClock clock;
     private final AtomicReference<PolicyType> current = new AtomicReference<>(PolicyType.STRICT_PRIORITY);
 
     public PolicyType current() {
@@ -23,6 +21,6 @@ public class PolicySelector {
 
     public void select(PolicyType type) {
         current.set(type);
-        stats.switchPolicy(type.name(), clock.nowMinutes());
+        stats.switchPolicy(type.name());
     }
 }

@@ -59,6 +59,10 @@ public class OrderBook {
         return completedHistory.stream().limit(limit).toList();
     }
 
+    public boolean hasOpenOrders() {
+        return !openOrders.isEmpty();
+    }
+
     public long submittedCount() {
         return submitted.get();
     }

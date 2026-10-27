@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { SlidersHorizontalIcon } from 'lucide-react'
 import { api } from '../../api/http'
 import type { PolicyId } from '../../api/types'
 import { Button } from '../../components/Button'
@@ -29,7 +30,7 @@ export function ControlsPanel() {
   }
 
   return (
-    <Panel title="Simulation controls" subtitle="1 real second = 1 simulated minute × speed">
+    <Panel icon={SlidersHorizontalIcon} title="Simulation controls" subtitle="1 real second = 1 simulated minute × speed">
       <div className={styles.grid}>
         <div className={styles.field}>
           <span className={styles.label}>Speed</span>

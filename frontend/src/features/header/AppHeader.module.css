@@ -18,13 +18,13 @@
 }
 
 .name {
-  font-size: 16px;
+  font-size: var(--text-lg);
   font-weight: 500;
   letter-spacing: 0.04em;
 }
 
 .tagline {
-  font-size: 12px;
+  font-size: var(--text-sm);
   color: var(--mute);
 }
 
