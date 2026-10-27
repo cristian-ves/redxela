@@ -1,0 +1,36 @@
+.button {
+  padding: var(--space-2) var(--space-4);
+  border-radius: 3px;
+  border: 1px solid transparent;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.button:disabled {
+  opacity: 0.5;
+}
+
+.small {
+  padding: 4px 10px;
+  font-size: 12px;
+}
+
+.primary {
+  background: var(--primary);
+  color: var(--on-primary);
+}
+
+.ghost {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--hairline);
+}
+
+.ghost:hover:not(:disabled) {
+  background: var(--raised);
+}
+
+.danger {
+  background: var(--danger);
+  color: var(--badge-ink);
+}

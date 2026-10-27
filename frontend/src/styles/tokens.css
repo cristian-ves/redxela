@@ -1,0 +1,58 @@
+/* Design tokens. Dark is the default; the light (cream) theme overrides the same names. */
+:root,
+:root[data-theme='dark'] {
+  --canvas: #1b1c1e;
+  --soft: #242528;
+  --raised: #2d2f33;
+  --hairline: #3a3c41;
+  --ink: #f0e8d4;
+  --body-strong: #d8cfba;
+  --body: #bab19c;
+  --mute: #a39b88;
+  --primary: #f0e8d4;
+  --on-primary: #1b1c1e;
+  --ok: #a3b57f;
+  --busy: #f0e8d4;
+  --wait: #d9a94a;
+  --danger: #d4705a;
+  --badge-ink: #1b1c1e;
+  --glass-bg: rgba(36, 37, 40, 0.86);
+  --glass-border: rgba(240, 232, 212, 0.16);
+  --glass-shadow: 0 12px 32px rgba(0, 0, 0, 0.5), 0 2px 6px rgba(0, 0, 0, 0.35);
+  --scrim: rgba(0, 0, 0, 0.4);
+}
+
+:root[data-theme='light'] {
+  --canvas: #f1ead8;
+  --soft: #e8e0ca;
+  --raised: #ddd4ba;
+  --hairline: #c4b99a;
+  --ink: #262320;
+  --body-strong: #3c372f;
+  --body: #575042;
+  --mute: #5e5645;
+  --primary: #262320;
+  --on-primary: #f1ead8;
+  --ok: #53692f;
+  --busy: #262320;
+  --wait: #87590a;
+  --danger: #9c3a28;
+  --badge-ink: #f1ead8;
+  --glass-bg: rgba(241, 234, 216, 0.86);
+  --glass-border: rgba(38, 35, 32, 0.18);
+  --glass-shadow: 0 12px 32px rgba(60, 48, 20, 0.24), 0 2px 6px rgba(60, 48, 20, 0.14);
+  --scrim: rgba(38, 35, 32, 0.3);
+}
+
+:root {
+  --font-sans: Inter, system-ui, sans-serif;
+  --font-mono: 'DM Mono', ui-monospace, Menlo, monospace;
+  --radius-sm: 2px;
+  --radius: 4px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --page-width: 1280px;
+}

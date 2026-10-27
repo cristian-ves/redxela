@@ -1,0 +1,28 @@
+.track {
+  height: 8px;
+  min-width: 60px;
+  background: var(--raised);
+  border-radius: 1px;
+  overflow: hidden;
+}
+
+.fill {
+  display: block;
+  height: 100%;
+}
+
+.busy {
+  background: var(--busy);
+}
+
+.ok {
+  background: var(--ok);
+}
+
+.wait {
+  background: var(--wait);
+}
+
+.bad {
+  background: var(--danger);
+}
